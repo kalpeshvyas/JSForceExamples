@@ -1,0 +1,14 @@
+doctype html
+html 
+    head 
+        title=  "Salesforce JSForce to Node"
+        script(src='/socket.io/socket.io.js')
+        script(type='text/javascript').
+            var socket = io();
+            socket.on('testerEvent', function(data){document.getElementById("socketMessage").innerHTML = data});
+    body 
+        include ./header.pug
+        p This is the main contents
+        p#socketMessage here it should print
+        p #{sfdcMessage}
+        include ./footer.pug

@@ -1,0 +1,29 @@
+.header {
+    display:block;
+    background-color : blue;
+    color : white;
+    width :inherit;
+    height : 2em;
+    font-size:larger;
+    padding:.5em;
+    top:0em;
+}
+
+body {
+    background-color: bisque;
+    font-size:2em;
+    display :block;
+}
+
+.footer{
+    display:block;
+    background-color : blue;
+    color : white;
+    width :inherit;
+    height : 2em;
+    font-size: .5em;
+    text-align: center;
+    padding:.5em;
+    position:fixed;
+    bottom:0em;
+}
