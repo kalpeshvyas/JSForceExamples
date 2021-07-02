@@ -1,9 +1,11 @@
 var express = require('express');
 var app = new express();
-var sForceLib = require('./connection.js');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var jsforce = require('jsforce');
+
+const port = process.env.PORT || 7800;
+
 global.connection;
 
 app.set('view engine', 'pug');
@@ -51,4 +53,4 @@ io.on('connection', function(socket){
 });
 
 
-http.listen('7800');
+http.listen(port);
