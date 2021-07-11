@@ -6,9 +6,21 @@ html
         script(type='text/javascript').
             var socket = io();
             socket.on('testerEvent', function(data){document.getElementById("socketMessage").innerHTML = data});
+            function publishToSalesforce(){
+                var accStatus = document.getElementById("txtAccountStatus").value;
+                var accRevenue = document.getElementById("txtRevenue").value;
+                console.log(accStatus);
+                socket.emit('publish',{AccountStatus : accStatus, Revenue : accRevenue});
+                }
+            
     body 
         include ./header.pug
         p This is the main contents
         p#socketMessage here it should print
         p #{sfdcMessage}
+        div  Account Status : 
+            input#txtAccountStatus(type="text", name="txtAccountStatus")
+            | Revenue :
+            input#txtRevenue(type="text", name="txtRevenue")
+            input(type="button", value="Publish" onclick="publishToSalesforce()")
         include ./footer.pug

@@ -45,7 +45,16 @@ io.on('connection', function(socket){
             console.log(message.payload)
             socket.emit('testerEvent', JSON.stringify(message));
             return message;
-          });   
+          });  
+          socket.on('publish', data =>{
+               console.log(data.AccountStatus);
+              conn.sobject('Account_Notification__e').              
+              create({ Account_Status__c : data.AccountStatus, Revenue__c : data.Revenue }, function(err, ret) {
+                if (err || !ret.success) { return console.error(err, ret);}
+                console.log("Record created ...");
+            }); 
+          });
+         
       });     
    /* setTimeout(function() {
         socket.emit('testerEvent', { description: 'A custom event named testerEvent!'});
